@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api *)",
+      "Bash(git -C /Users/chris/git/anthropic-api checkout --orphan main)",
+      "Bash(git -C /Users/chris/git/anthropic-api rm -rf .)",
+      "Bash(git -C /Users/chris/git/anthropic-api commit --allow-empty -m \"Initial commit\")",
+      "Bash(git *)"
+    ]
+  }
+}
