@@ -27,6 +27,13 @@ Corrections and lessons that apply across this project, regardless of module.
 **Rule**: When a new requirement overlaps with an existing working script, write a new self-contained implementation. Do not refactor or modify the existing script unless explicitly asked.
 **Applies to**: global
 
+### [2026-04-23] Use explicit naming for helper variants, not same name with tweaks
+
+**Context**: Claude reviewed a streaming notebook and suggested keeping `chat()` but adding `return response` to fix a consistency issue with other helpers in the series.
+**Correction**: User wanted the function renamed to `stream_chat()` instead — the distinct name signals streaming behaviour at every call site.
+**Rule**: When a helper has meaningfully different behaviour (streaming vs. batch, async vs. sync, etc.), rename it explicitly rather than reusing the existing name with extra parameters or a return value. Explicit naming at the call site takes priority over surface-level naming consistency.
+**Applies to**: notebook helper functions in this repo
+
 ### [2026-04-23] Check if a dependency is already available before modifying scripts to handle it
 
 **Context**: ruff was not on PATH inside the project venv. Claude tried to edit the hook script to add a venv fallback path.
