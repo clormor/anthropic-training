@@ -37,6 +37,7 @@ This file augments the global Valliance standards in `~/.claude/CLAUDE.md`. Do n
 
 - **"Use X across the codebase" means run it on project files, not configure it globally.** Do not touch `~/.claude/` or other global config without explicit confirmation.
 - **Before patching a script to handle a missing dependency, check whether it is already installed another way** (brew, system PATH, etc.). Ask the user rather than assuming it needs a workaround.
+- **Assistant prefill is not supported on claude-sonnet-4-6 and newer.** The API returns HTTP 400 when a conversation ends with an assistant turn on current models. Notebooks that demonstrate prefill must use an older model (e.g. claude-sonnet-4-0) intentionally. Do not flag this as a regression or the associated comment as incorrect without testing first.
 
 ## Memory Protocol
 
