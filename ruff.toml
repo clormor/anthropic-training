@@ -1,0 +1,2 @@
+[lint]
+ignore = ["E402"]  # load_dotenv() before imports is intentional in notebooks
