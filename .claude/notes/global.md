@@ -41,6 +41,13 @@ Corrections and lessons that apply across this project, regardless of module.
 **Rule**: Before modifying a script to work around a missing dependency, verify whether the dependency is already available another way (system package manager, global install, etc.). Ask the user if unsure rather than immediately patching the script.
 **Applies to**: global
 
+### [2026-04-23] Do not flag single-line helpers as unnecessary when called in multiple places
+
+**Context**: Reviewing notebook 005, Claude flagged `add_assistant_message` and `add_user_message` as one-liners that add no value over calling `messages.append()` directly.
+**Correction**: Both helpers are called across multiple cells, so removing them would introduce duplication. The brevity of the implementation is irrelevant if reuse is the purpose.
+**Rule**: Do not suggest removing a helper solely because its body is short. Check all call sites first; if it is used in more than one place, the abstraction is earning its keep.
+**Applies to**: code reviews of notebooks in this repo
+
 ### [2026-04-23] Assistant prefill is not supported in claude-sonnet-4-6 and newer models
 
 **Context**: Reviewing notebook 005, Claude flagged `claude-sonnet-4-0` as a deprecated regression and the comment "Newer models do not support assistant message prefill" as factually wrong.
