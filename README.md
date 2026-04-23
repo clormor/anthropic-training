@@ -9,7 +9,8 @@ Clone the repo, then run:
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip install jupyter ipykernel anthropic
+pip install jupyter ipykernel anthropic pre-commit
+pre-commit install
 ```
 
 ## API Key
