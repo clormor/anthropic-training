@@ -40,3 +40,10 @@ Corrections and lessons that apply across this project, regardless of module.
 **Correction**: User had already installed ruff via brew, making the script edit unnecessary. Claude should have asked or checked system PATH first.
 **Rule**: Before modifying a script to work around a missing dependency, verify whether the dependency is already available another way (system package manager, global install, etc.). Ask the user if unsure rather than immediately patching the script.
 **Applies to**: global
+
+### [2026-04-23] Assistant prefill is not supported in claude-sonnet-4-6 and newer models
+
+**Context**: Reviewing notebook 005, Claude flagged `claude-sonnet-4-0` as a deprecated regression and the comment "Newer models do not support assistant message prefill" as factually wrong.
+**Correction**: Both the model choice and the comment are correct. The API returns HTTP 400 "This model does not support assistant message prefill" when a conversation ends with an assistant turn on claude-sonnet-4-6+. claude-sonnet-4-0 is used intentionally to enable the prefill demonstration.
+**Rule**: Do not flag use of an older model as a bug when the notebook is explicitly demonstrating assistant prefill. Verify API behaviour before marking a comment as incorrect. Use `client.messages.create()` with a trailing assistant turn to test whether a model supports prefill before claiming it does or does not.
+**Applies to**: all code reviews of notebooks in this repo
