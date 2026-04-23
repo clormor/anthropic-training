@@ -35,7 +35,8 @@ This file augments the global Valliance standards in `~/.claude/CLAUDE.md`. Do n
 
 <!-- This is the most valuable section. Update it every time Claude or a team member hits a recurring issue in THIS project. -->
 
-- [Add project-specific gotchas here]
+- **"Use X across the codebase" means run it on project files, not configure it globally.** Do not touch `~/.claude/` or other global config without explicit confirmation.
+- **Before patching a script to handle a missing dependency, check whether it is already installed another way** (brew, system PATH, etc.). Ask the user rather than assuming it needs a workaround.
 
 ## Memory Protocol
 
