@@ -54,3 +54,17 @@ Corrections and lessons that apply across this project, regardless of module.
 **Correction**: Both the model choice and the comment are correct. The API returns HTTP 400 "This model does not support assistant message prefill" when a conversation ends with an assistant turn on claude-sonnet-4-6+. claude-sonnet-4-0 is used intentionally to enable the prefill demonstration.
 **Rule**: Do not flag use of an older model as a bug when the notebook is explicitly demonstrating assistant prefill. Verify API behaviour before marking a comment as incorrect. Use `client.messages.create()` with a trailing assistant turn to test whether a model supports prefill before claiming it does or does not.
 **Applies to**: all code reviews of notebooks in this repo
+
+### [2026-04-27] Notebook output cleanup belongs in pre-commit, not PostToolUse hook
+
+**Context**: A notebook had cell outputs committed. Claude proposed adding an `.ipynb` case to the PostToolUse `post-tool-format.sh` hook to strip outputs via `jupyter nbconvert`.
+**Correction**: The project already has `nbstripout` configured in `.pre-commit-config.yaml`. Notebook hygiene is pre-commit's responsibility; PostToolUse is for source file formatting.
+**Rule**: When a notebook needs output stripping, use the pre-commit framework (nbstripout). Do not modify PostToolUse hooks for this purpose.
+**Applies to**: notebooks in this repo
+
+### [2026-04-27] When the user says to remove something, remove it — do not patch it
+
+**Context**: The global `~/.hooks/pre-commit` was causing a problem. Claude patched it to also delegate to the project's pre-commit framework. User said "get rid of that global hook i hate it anyway".
+**Correction**: User wanted the file deleted, not modified. Claude should have deleted it immediately.
+**Rule**: When the user expresses that they want something removed or gone, delete it. Do not preserve it in modified form. "Get rid of it" is not a request to refactor.
+**Applies to**: global
