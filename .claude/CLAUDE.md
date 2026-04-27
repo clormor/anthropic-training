@@ -40,6 +40,8 @@ Notebooks are numbered sequentially within each directory. Exercise and complete
 - **Assistant prefill is not supported on claude-sonnet-4-6 and newer.** The API returns HTTP 400 when a conversation ends with an assistant turn on current models. Notebooks that demonstrate prefill must use an older model (e.g. `claude-sonnet-4-0`) intentionally. Do not flag this as a regression or the associated comment as incorrect without testing first.
 - **Do not flag `message.content[0].text` as unsafe in code reviews.** This is a teaching codebase; defensive type-guard boilerplate obscures the learning goal.
 - **Do not suggest removing a short helper if it is called in more than one place.** Check all call sites before recommending removal.
+- **Notebook output cleanup is handled by `nbstripout` via pre-commit, not the PostToolUse hook.** Do not add `.ipynb` cases to `post-tool-format.sh`; the pre-commit framework is the right place.
+- **When the user says to remove something, delete it.** Do not preserve or patch it. "Get rid of it" means gone, not modified.
 
 ## Memory Protocol
 
