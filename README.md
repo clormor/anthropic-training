@@ -13,10 +13,14 @@ pip install jupyter ipykernel anthropic python-dotenv pre-commit
 pre-commit install
 ```
 
-## API Key
+## API Keys
 
-Get your Anthropic API key from the [Anthropic Console](https://platform.claude.com/dashboard), then create your `.env` file:
+1. Get your Anthropic API key from the [Anthropic Console](https://platform.claude.com/dashboard)
+2. For the embedding exercises, create your Voyage API key from your (Voyage AI Profile page)[https://dashboard.voyageai.com/organization/api-keys]
+3. Create your `.env` file:
 
-```bash
-echo "ANTHROPIC_API_KEY=your-key-here" > .env
-```
+    ```bash
+    echo "ANTHROPIC_API_KEY=your-key-here" > .env
+    echo "VOYAGE_API_KEY=your-voyage-api-key-here" >> .env
+    ```
+
